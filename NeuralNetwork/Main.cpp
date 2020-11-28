@@ -6,8 +6,16 @@
 #include"resource.h"
 #include "LeNet5.h"
 #include "DataLoader.h"
+//#include<torch/torch.h>
+//#include<ATen/ATen.h>
+//#include<opencv2/opencv.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include<vector>
+#include"Util.h"
+#include"LearnOpencv.h"
 
-#include<opencv2/opencv.hpp>
 
 using namespace std;
 
@@ -15,20 +23,27 @@ using namespace std;
 int main()
 {
     cv::Mat image;
-    cout << image.cols << endl;
+    cout << "start" << endl;
     image = cv::imread("T:\\Cneuralnetwork\\t10k-images\\0_0.bmp");
     if (image.empty()) {
         cout << "没有分配到对象" << endl;
     }
+    LearnOpencv lo(image);
+    //cv::Mat gray = lo.color2gray();
+    //lo.accessPixel();
+    //lo.createGrayImage();
+    //lo.passParameter(arr);
+    //lo.printImageVector();
+    Util a;
+    vector<vector<double>> v = a.getFilter();
 
-    cout << image.cols;
+
+    
+
    
-    cv::namedWindow("niaho");
-    cv::imshow("图片", image);
-    cv::imshow("aaa", image);
    
 
-
+    cv::waitKey(0);
     return 0;
 }
 

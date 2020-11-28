@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\Neural">
+      <UniqueIdentifier>{76abc983-ece3-400f-8918-9af6c66f5190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LeNet5.cpp">
@@ -24,6 +27,21 @@
     <ClCompile Include="DataLoader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="LearnOpencv.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>源文件\Neural</Filter>
+    </ClCompile>
+    <ClCompile Include="Output.cpp">
+      <Filter>源文件\Neural</Filter>
+    </ClCompile>
+    <ClCompile Include="Hidden.cpp">
+      <Filter>源文件\Neural</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LeNet5.h">
@@ -33,6 +51,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LearnOpencv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Hidden.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

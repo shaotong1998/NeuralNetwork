@@ -146,13 +146,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataLoader.cpp" />
+    <ClCompile Include="Hidden.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LearnOpencv.cpp" />
     <ClCompile Include="LeNet5.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Output.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataLoader.h" />
+    <ClInclude Include="Hidden.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="LearnOpencv.h" />
     <ClInclude Include="LeNet5.h" />
+    <ClInclude Include="Output.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="NeuralNetwork.rc" />
