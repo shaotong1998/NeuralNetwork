@@ -19,7 +19,7 @@ vector<vector<double>> Util::getFilter()
             }
         }
     }
-    printFilter(filter);
+    //printFilter(filter);
     return filter;
 }
 
@@ -31,4 +31,20 @@ void Util::printFilter(vector<vector<double>> v)
         }
         cout << endl;
     }
+}
+
+double Util::matrixInnerProduct(vector<vector<double>> a, vector<vector<double>> b)
+{
+    //int length = a.size();
+    double result = 0;
+    if (a.size() != b.size()) {
+        cout << "算不了，下一个！" << endl;
+    }
+    //做内积简单很多
+    for (int i = 0; i < a.size(); i++) {
+        for (int j = 0; j < a.size(); j++) {
+            result = a[i][j] * b[i][j] + result;
+        }
+    }
+    return result;
 }

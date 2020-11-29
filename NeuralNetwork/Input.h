@@ -16,6 +16,7 @@ private:
 public:
 	Input();
 	Input(vector<vector<int>> image);
+	vector<vector<int>> getInput();
 
 };
 

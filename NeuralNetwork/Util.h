@@ -8,6 +8,7 @@ public:
 	Util();
 	vector<vector<double>> getFilter();
 	void printFilter(vector<vector<double>> v);
+	double matrixInnerProduct(vector<vector<double>> a, vector<vector<double>> b);
 };
 
 /*

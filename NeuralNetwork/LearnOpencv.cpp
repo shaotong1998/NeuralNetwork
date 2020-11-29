@@ -57,16 +57,18 @@ void LearnOpencv::createGrayImage()
 vector<vector<int>> LearnOpencv::image2Array()
 {
 	cv::Mat targetImage = color2gray();//把目标图像转换为灰度图然后再
-	cv::imshow("32", targetImage);
-	vector<vector<int>> varr(this->row);  //定义二维vevtor Row行
+	
+	//cv::imshow("32", targetImage);
+	vector<vector<int>> varr(targetImage.rows);  //定义二维vevtor Row行
 	for (int i = 0; i < varr.size(); i++) {
-		varr[i].resize(this->col);       // 每行扩充为列
+		varr[i].resize(targetImage.cols);       // 每行扩充为列
 	}
 	for (int i = 0; i < varr.size(); i++) {
 		for (int j = 0; j < varr[i].size(); j++) {
 			varr[i][j] = (targetImage.at<unsigned char>(i, j)) - '0' + 48;
 		}
 	}
+	//cout << varr.size() << endl;
 	return varr;
 }
 
