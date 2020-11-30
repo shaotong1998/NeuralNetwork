@@ -38,9 +38,12 @@ int main()
     //vector<vector<double>> v = a.getFilter();
     //lo.image2Array();
     
-    LeNet5 lenet(lo.image2Array()); //用一个图像来生成一个lenet网络
-    lenet.initLeNet5();
+    //LeNet5 lenet(lo.image2Array()); //用一个图像来生成一个lenet网络
+    //lenet.initLeNet5();
 
+    string trainImage = "T:\\Cneuralnetwork\\mnist\\train-images.idx3-ubyte";
+    DataLoader d(trainImage);
+    d.readTrainImage();
 
 
     
