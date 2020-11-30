@@ -5,9 +5,20 @@ Hidden::Hidden()
 	
 }
 
+int Hidden::getLength()
+{
+	return this->imageLength;
+}
+
+vector<vector<double>> Hidden::getImage()
+{
+	//vector<vector<double>> res = this->image;
+	return this->image;
+}
+
 void Hidden::connectionByConvolution(Input input,int outputLength)//»¹ÊÇÓÃinputºÃ£¬ÕâÑù¾ÍÏÔµÃÁ¬ÆðÀ´ÁË
 {
-	this->length = outputLength;
+	this->imageLength = outputLength;
 	Util util;
 	this->w = util.getFilter();
 	//ÔÚÕâÀï½øÐÐ¾í»ý²Ù×÷,Ó¦µ±ÏÈ³õÊ¼»¯w×÷ÎªÎ´À´Òª¸üÐÂµÄ
@@ -15,9 +26,9 @@ void Hidden::connectionByConvolution(Input input,int outputLength)//»¹ÊÇÓÃinputº
 	//ÓÐÁËfilterÓÐÁËÄ¿±êinputImage£¬ÖÕÓÚ¿ªÊ¼¾í»ý²Ù×÷¡£Í¨¹ý¾í»ýÀ´¸üÐÂthis.image
 	//¾í»ýºË´óÐ¡Îª5£¬²½³¤Îª1£¬Ã»ÓÐpadding
 	//28*28µÄ¿Õimage
-	image.resize(this->length);
+	image.resize(this->imageLength);
 	for (int i = 0; i < image.size(); i++) {
-		image[i].resize(this->length);
+		image[i].resize(this->imageLength);
 	}
 	//5*5µÄ¿Õ¸ÐÊÜÒ°
 	vector<vector<double>> scaner(w.size());
@@ -42,6 +53,54 @@ void Hidden::connectionByConvolution(Input input,int outputLength)//»¹ÊÇÓÃinputº
 	}
 	//util.printFilter(image); //µÃµ½Ò»¸ö28*28µÄÍ¼Ïñ
 	
+}
+
+void Hidden::max_subSamping(Hidden input,int length)
+{
+	//lengthÎªÏÂ²ÉÑùµÄ´°¿Ú´óÐ¡£¬lenet5Îª2
+	this->imageLength = input.imageLength /length;  
+	vector<vector<double>> inputImage = input.getImage();
+
+	vector<vector<double>> max_subImage(this->imageLength);  //s2ÖÐ14*14
+	for (int i = 0; i < max_subImage.size(); i++) {
+		max_subImage[i].resize(imageLength);
+	}
+	
+	for (int i = 0; i < input.getLength(); i = i + 2) {
+		for (int j = 0; j < input.getLength(); j = j + 2) {
+			max_subImage[i / 2][j / 2] = maxPixel(inputImage[i][j],inputImage[i][j+1],inputImage[i+1][j],inputImage[i+1][j+1]);
+		}
+	}
+	this->image = max_subImage;
+}
+
+double Hidden::maxPixel(double a, double b, double c, double d)
+{
+	//double tem;
+	if (a >= b) {//a b ¶¼ÊÇ×î´óÖµ
+		b = a;
+	}
+	else {
+		a = b;
+	}
+	if (c >= d) {
+		d = c;
+	}
+	else {
+		c = d;
+	}
+	if (a > c) {
+		return a;
+	}
+	else {
+		return c;
+	}
+}
+
+void Hidden::printImage()
+{
+	Util util;
+	util.printFilter(this->image);
 }
 
 

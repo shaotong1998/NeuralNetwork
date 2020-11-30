@@ -151,6 +151,7 @@
     <ClCompile Include="LearnOpencv.cpp" />
     <ClCompile Include="LeNet5.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MyConvolution.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="LearnOpencv.h" />
     <ClInclude Include="LeNet5.h" />
+    <ClInclude Include="MyConvolution.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Util.h" />

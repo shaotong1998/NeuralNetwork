@@ -30,5 +30,7 @@ public:
 	vector<vector<int>> image2Array();
 	//打印vector
 	void printImageVector();
+	//测试最大值
+	double maxPixel(double a, double b, double c, double d);
 };
 

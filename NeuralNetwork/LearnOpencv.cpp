@@ -83,6 +83,28 @@ void LearnOpencv::printImageVector()
 	}
 }
 
+double LearnOpencv::maxPixel(double a, double b, double c, double d)
+{
+	if (a >= b) {//a b 都是最大值
+		b = a;
+	}
+	else {
+		a = b;
+	}
+	if (c >= d) {
+		d = c;
+	}
+	else {
+		c = d;
+	}
+	if (a > c) {
+		return a;
+	}
+	else {
+		return c;
+	}
+}
+
 
 
 

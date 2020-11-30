@@ -37,6 +37,7 @@ int main()
     //Util a;
     //vector<vector<double>> v = a.getFilter();
     //lo.image2Array();
+    
     LeNet5 lenet(lo.image2Array()); //用一个图像来生成一个lenet网络
     lenet.initLeNet5();
 
