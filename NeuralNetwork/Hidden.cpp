@@ -2,6 +2,10 @@
 
 Hidden::Hidden()
 {
+	//ÔÚÕâÀï¶ÔÈ¨Öµ½øĞĞ³õÊ¼»¯
+	Util util;
+	this->w = util.getWeight();
+	this->bias = rand() * (2. / RAND_MAX) - 1;
 	
 }
 
@@ -20,9 +24,9 @@ void Hidden::connectionByConvolution(Input input,int outputLength)//»¹ÊÇÓÃinputº
 {
 	this->imageLength = outputLength;
 	Util util;
-	this->w = util.getFilter();
+	//this->w = util.getFilter();
 	//ÔÚÕâÀï½øĞĞ¾í»ı²Ù×÷,Ó¦µ±ÏÈ³õÊ¼»¯w×÷ÎªÎ´À´Òª¸üĞÂµÄ
-	vector<vector<int>> inputImage = input.getInput();
+	vector<vector<double>> inputImage = input.getInput();
 	//ÓĞÁËfilterÓĞÁËÄ¿±êinputImage£¬ÖÕÓÚ¿ªÊ¼¾í»ı²Ù×÷¡£Í¨¹ı¾í»ıÀ´¸üĞÂthis.image
 	//¾í»ıºË´óĞ¡Îª5£¬²½³¤Îª1£¬Ã»ÓĞpadding
 	//28*28µÄ¿Õimage
@@ -48,7 +52,7 @@ void Hidden::connectionByConvolution(Input input,int outputLength)//»¹ÊÇÓÃinputº
 				}
 			}
 			//util.printFilter(scaner);
-			image[i][j] = util.matrixInnerProduct(scaner,this->w);
+			image[i][j] = util.matrixInnerProduct(scaner,this->w) + this->bias;
 		}
 	}
 	//util.printFilter(image); //µÃµ½Ò»¸ö28*28µÄÍ¼Ïñ
@@ -68,7 +72,7 @@ void Hidden::max_subSamping(Hidden input,int length)
 	
 	for (int i = 0; i < input.getLength(); i = i + 2) {
 		for (int j = 0; j < input.getLength(); j = j + 2) {
-			max_subImage[i / 2][j / 2] = maxPixel(inputImage[i][j],inputImage[i][j+1],inputImage[i+1][j],inputImage[i+1][j+1]);
+			max_subImage[i / 2][j / 2] =sigmoid( maxPixel(inputImage[i][j],inputImage[i][j+1],inputImage[i+1][j],inputImage[i+1][j+1]) + this->bias);
 		}
 	}
 	this->image = max_subImage;
@@ -101,6 +105,12 @@ void Hidden::printImage()
 {
 	Util util;
 	util.printFilter(this->image);
+}
+
+double Hidden::sigmoid(double x)
+{
+	return (1 / (1 + exp(-x)));
+	
 }
 
 

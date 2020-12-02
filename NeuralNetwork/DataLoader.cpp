@@ -1,7 +1,4 @@
 #include "DataLoader.h"
-#include <iostream>
-#include <bitset>
-#include <vector>
 using namespace std;
 
 void DataLoader::printA() {
@@ -51,7 +48,7 @@ void DataLoader::readTrainImage() {
 	*/
 	//当然是选择用二维vector来保存图片了
 	vector<vector<vector<int>>> trainData(numberOfImages);
-	for (int i = 0; i < numberOfRows; i++) {
+	for (int i = 0; i < numberOfImages; i++) {
 		trainData[i].resize(numberOfRows);
 		for (int j = 0; j < numberOfColums; j++) {
 			trainData[i][j].resize(numberOfColums);
@@ -63,13 +60,53 @@ void DataLoader::readTrainImage() {
 		for (int i = 0; i < numberOfRows; i++) {
 			for (int j = 0; j < numberOfRows; j++) {
 				//trainData[n][i][j] = infile.get();
-				//cout << infile.get();
+				cout << infile.get();
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
+	
+
+	
+}
+
+vector<vector<vector<double>>> DataLoader::readTrainImage(int num,int length)
+{//读取的个数，每个图片的长度
+	//以读模式打开文件
+	ifstream infile(this->mnistFile, ios::in | ios::binary);  //二进制读的方式打开文件
+	if (!infile) {
+		cout << "读取文件失败" << endl;
+	}
+	uint32_t magicNumber;
+	uint32_t numberOfImages;
+	uint32_t numberOfRows;
+	uint32_t numberOfColums;
+	infile.read((char*)&magicNumber, 4);
+	infile.read((char*)&numberOfImages, 4);
+	infile.read((char*)&numberOfRows, 4);
+	infile.read((char*)&numberOfColums, 4);
+
+	numberOfImages = highEndian2LowEndian(numberOfImages);
+	numberOfRows = highEndian2LowEndian(numberOfRows);
+	numberOfColums = highEndian2LowEndian(numberOfColums);
+
+	vector<vector<vector<double>>> trainData(num);
+	for (int i = 0; i < num; i++) {
+		trainData[i].resize(length);
+		for (int j = 0; j < length; j++) {
+			trainData[i][j].resize(length);
+		}
+	}
+	for (int n = 0; n < num; n++) {
+		for (int i = 0; i < numberOfRows; i++) {
+			for (int j = 0; j < numberOfRows; j++) {
+				trainData[n][i][j] = infile.get();
+				//cout << trainData[n][i][j];
 			}
 			//cout << endl;
 		}
 		//cout << endl;
 	}
-	
-
-	
+	return trainData;
 }

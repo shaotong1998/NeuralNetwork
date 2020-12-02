@@ -22,13 +22,41 @@ using namespace std;
 
 int main()
 {
+    int imageSize = 32;
     cv::Mat image;
     cout << "start" << endl;
-    image = cv::imread("T:\\Cneuralnetwork\\t10k-images\\0_0.bmp");
-    if (image.empty()) {
-        cout << "没有分配到对象" << endl;
+  
+ 
+    string trainImage = "T:\\Cneuralnetwork\\mnist\\train-images.idx3-ubyte";
+    DataLoader d(trainImage);
+    
+    vector<vector<vector<double>>> traindata = d.readTrainImage(100,imageSize);
+    
+    vector < vector < double >> test(imageSize);
+    
+    
+    
+    for (int i = 0; i < imageSize; i++) {
+        test[i].resize(imageSize);
     }
-    LearnOpencv lo(image);
+
+    for (int i = 0; i < imageSize; i++) {
+        for (int j = 0; j < imageSize; j++) {
+            test[i][j] = traindata[0][i][j];
+ 
+        }
+    }
+
+  
+    
+    LeNet5 lenet(test);
+    lenet.initLeNet5();
+ 
+   
+   
+
+    
+/*一些测试
     //cv::Mat gray = lo.color2gray();
     //lo.accessPixel();
     //lo.createGrayImage();
@@ -40,15 +68,14 @@ int main()
     
     //LeNet5 lenet(lo.image2Array()); //用一个图像来生成一个lenet网络
     //lenet.initLeNet5();
-
-    string trainImage = "T:\\Cneuralnetwork\\mnist\\train-images.idx3-ubyte";
-    DataLoader d(trainImage);
-    d.readTrainImage();
-
-
-    
-
-   
+    */
+   /* //下面是直接用opencv读数据
+  image = cv::imread("T:\\Cneuralnetwork\\t10k-images\\0_0.bmp");
+    if (image.empty()) {
+        cout << "没有分配到对象" << endl;
+    }
+    LearnOpencv lo(image);
+    */
    
 
     cv::waitKey(0);

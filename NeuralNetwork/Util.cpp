@@ -23,6 +23,24 @@ vector<vector<double>> Util::getFilter()
     return filter;
 }
 
+vector<vector<double>> Util::getWeight()
+{
+    int length = 5;//filter±ß³¤Îª5
+    vector<vector<double>> weight(length);
+    for (int i = 0; i < weight.size(); i++) {
+        weight[i].resize(length);
+    }
+
+    for (int i = 0; i < weight.size(); i++) {
+        for (int j = 0; j < weight[i].size(); j++) {
+            weight[i][j] = rand() * (2. / RAND_MAX) - 1;
+
+        }
+    }
+   // printFilter(weight);
+    return weight;
+}
+
 void Util::printFilter(vector<vector<double>> v)
 {
     for (int i = 0; i < v.size(); i++) {
@@ -47,4 +65,9 @@ double Util::matrixInnerProduct(vector<vector<double>> a, vector<vector<double>>
         }
     }
     return result;
+}
+
+double Util::sigmoid(double x)
+{
+    return 1/(1+exp(-x));
 }

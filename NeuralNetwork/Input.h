@@ -10,13 +10,13 @@ using namespace std;
 class Input
 {
 private:
-	vector<vector<int>> image;
+	vector<vector<double>> image;
 	int bias = 0;
 	
 public:
 	Input();
-	Input(vector<vector<int>> image);
-	vector<vector<int>> getInput();
+	Input(vector<vector<double>> image);
+	vector<vector<double>> getInput();
 
 };
 

@@ -7,11 +7,12 @@
 using namespace std;
 class LeNet5 {
 private:
-	vector<vector<int>> image;
+	vector<vector<double>> image;
 	int t = 1655;
 public:
 	LeNet5();
-	LeNet5(vector<vector<int>> image);
+	LeNet5(vector<vector<double>> image);
+
 	int initLeNet5();
 
 };

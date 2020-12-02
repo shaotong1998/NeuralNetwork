@@ -4,7 +4,7 @@ LeNet5::LeNet5()
 {
 }
 
-LeNet5::LeNet5(vector<vector<int>> image)
+LeNet5::LeNet5(vector<vector<double>> image)
 {
     this->image = image;
 }
@@ -29,6 +29,11 @@ int LeNet5::initLeNet5()
         cout << endl;
     }
     //3.C3卷积层，需要把六张14*14 -> 16张10*10
+    //问题：偏置怎么加？一个神经元里面有几个卷积核？
+    vector<Hidden> C3(16);
+    for (int i = 0; i < C3.size(); i++) {
+
+    }
 
     return 0;
 }

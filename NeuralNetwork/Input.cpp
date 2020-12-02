@@ -4,12 +4,12 @@ Input::Input()
 {
 }
 
-Input::Input(vector<vector<int>> image)
+Input::Input(vector<vector<double>> image)
 {
 	this->image = image;
 }
 
-vector<vector<int>> Input::getInput()
+vector<vector<double>> Input::getInput()
 {
 	return this->image;
 }
